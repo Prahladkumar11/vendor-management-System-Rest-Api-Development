@@ -1,9 +1,14 @@
+# Import necessary modules from Django
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from datetime import datetime
 
+# Define the 'vendor' model
 class vendor(models.Model):
+    """
+    Model representing a vendor.
+    """
     name = models.CharField(max_length=100)
     contact_details = models.TextField()
     address = models.TextField()
@@ -16,7 +21,12 @@ class vendor(models.Model):
     def __str__(self):
         return self.name
 
+
+# Define the 'purchaseOrder' model
 class purchaseOrder(models.Model):
+    """
+    Model representing a purchase order.
+    """
     vendor = models.ForeignKey(vendor, on_delete=models.CASCADE)
     poNumber = models.CharField(max_length=100)
     orderDate = models.DateTimeField()
@@ -29,28 +39,34 @@ class purchaseOrder(models.Model):
     acknowledgementDate = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return self.poNumber + " " + self.vendor.name
-    
+        return f"{self.poNumber} {self.vendor.name}"
+
+
+# Define the 'Performance' model
 class Performance(models.Model):
-    vendor=models.ForeignKey(vendor,on_delete=models.CASCADE)
-    date=models.DateTimeField()
-    onTimeDeliveryRate=models.FloatField(blank=True, null=True  )
-    qualityRatingAvg=models.FloatField(blank=True, null=True)
-    averageResponseTime=models.FloatField(blank=True, null=True) 
-    fulfillmentRate=models.FloatField(blank=True, null=True)
-    
+    """
+    Model representing the historical performance of a vendor.
+    """
+    vendor = models.ForeignKey(vendor, on_delete=models.CASCADE)
+    date = models.DateTimeField()
+    onTimeDeliveryRate = models.FloatField(blank=True, null=True)
+    qualityRatingAvg = models.FloatField(blank=True, null=True)
+    averageResponseTime = models.FloatField(blank=True, null=True)
+    fulfillmentRate = models.FloatField(blank=True, null=True)
+
     def __str__(self):
         return self.vendor.name
-    
 
+
+# Define a signal to update vendor performance metrics when a purchase order is saved
 @receiver(post_save, sender=purchaseOrder)
 def on_purchase_order_save(sender, instance, **kwargs):
     update_on_time_delivery_rate(instance)
     update_quality_rating_avg(instance)
-    # update_average_response_time(instance)
     update_fulfillment_rate(instance)
     create_historical_performance(instance)
-
+    
+    
 def update_on_time_delivery_rate(po_instance):
     if po_instance.status == 'completed':
         completed_purchases = purchaseOrder.objects.filter(
