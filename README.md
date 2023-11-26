@@ -53,11 +53,11 @@ python manage.py migrate
 
 # Start the development server
 python manage.py runserver
-
+```
 ## API Endpoints
 
 ### Vendors
-
+```bash
 - **GET /api/vendors/**
   - Retrieve all vendors.
 
