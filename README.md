@@ -72,9 +72,9 @@ python manage.py runserver
 
 - **GET /api/vendors/{vendor_id}/purchaseOrders/**
   - Retrieve all purchase orders for a specific vendor.
-
+```
 ### Purchase Orders
-
+```
 - **GET /api/purchaseOrders/**
   - Retrieve all purchase orders.
 
@@ -86,9 +86,9 @@ python manage.py runserver
 
 - **DELETE /api/purchaseOrders/{purchaseOrder_id}/**
   - Delete a specific purchase order.
-
+```
 ### Historical Performances
-
+```
 - **GET /api/performances/**
   - Retrieve all historical performances.
 
@@ -100,9 +100,9 @@ python manage.py runserver
 
 - **DELETE /api/performances/{performance_id}/**
   - Delete a specific historical performance.
-
+```
 ### Vendor Historical Performance
-
+```
 - **GET /api/vendors/{vendor_id}/performance/**
   - Retrieve historical performance data for a specific vendor.
 
