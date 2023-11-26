@@ -33,7 +33,15 @@ List the requirements needed to run your project, including dependencies and ver
 ## Installation
 
 
-https://github.com/Prahladkumar11/vendor-management-System-Rest-Api-Development-/assets/96491878/a2ddac19-90c5-4bc9-a6ac-8096657ff759
+
+
+
+https://github.com/Prahladkumar11/vendor-management-System-Rest-Api-Development/assets/96491878/865c19cb-8e1a-4226-9f0b-55503b60a580
+
+
+
+
+
 
 
 Provide step-by-step instructions on how to install and set up your project locally.
@@ -103,7 +111,7 @@ python manage.py runserver
 ```
 ### Vendor Historical Performance
 ```
-- **GET /api/vendors/{vendor_id}/performance/**
+- **POST /api/vendors/{vendor_id}/performance/**
   - Retrieve historical performance data for a specific vendor.
 
 
