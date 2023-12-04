@@ -16,7 +16,7 @@ Brief description or introduction of your project.
 
 ## Overview
 
-Provide a brief overview of your project. Include the purpose, key features, and any other relevant information.
+This web application help to manage the vendor and purchase record.And track the order and measure the performance of every vendor.
 
 ## Features
 
