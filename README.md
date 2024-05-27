@@ -1,7 +1,7 @@
 # vendor-management-System-Rest-Api-Development-
 
 
-Brief description or introduction of your project.
+
 
 ## Table of Contents
 
